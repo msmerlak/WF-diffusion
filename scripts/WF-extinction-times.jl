@@ -4,8 +4,8 @@ using Distributed
 addprocs(Sys.CPU_THREADS)
 
 using DataFrames, CSV
-
-
+using Plots; GR
+using StatsBase
 include("../src/utils.jl")
 
 @everywhere begin
@@ -25,6 +25,13 @@ results = pmap(WF_extinction, P) |> DataFrame
 
 CSV.write(datadir("sims", savename("extinction", p, "csv")), results)
 
+plot(
+    [mean(df.N) for df in groupby(results, :N)],
+    [mean(df.T) for df in groupby(results, :N)], 
+    yerr = [sem(df.T) for df in groupby(results, :N)],
+    yaxis = :log,
+    xlabel = "N", ylabel = "Extinction time"
+    )
 
 ## fixed N = 100, vary S = 2U
 p = Dict{Symbol, Any}(
@@ -33,8 +40,17 @@ p = Dict{Symbol, Any}(
     :N => 100, 
     :seed => 1:1000
     )
+
 P = dict_list(map(collect, p))
 fixed_N = pmap(p -> WF_extinction(p; SoverU = 2.), P) |> DataFrame
 
 
 CSV.write(datadir("sims", savename("extinction", p, "csv")), fixed_N)
+
+plot(
+    [mean(df.S) for df in groupby(fixed_N, :S)],
+    [mean(df.T) for df in groupby(fixed_N, :S)], 
+    yerr = [sem(df.T) for df in groupby(fixed_N, :S)],
+    yaxis = :log,
+    xlabel = "S = 2U", ylabel = "Extinction time"
+    )
