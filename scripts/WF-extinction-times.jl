@@ -5,6 +5,10 @@ addprocs(Sys.CPU_THREADS)
 
 using DataFrames, CSV
 using Plots; GR
+plot_font = "Computer Modern"
+default(fontfamily=plot_font,
+        linewidth=2, framestyle=:box, label=nothing, grid=false)
+using LaTeXStrings
 using StatsBase
 include("../src/utils.jl")
 
@@ -30,7 +34,7 @@ plot(
     [mean(df.T) for df in groupby(results, :N)], 
     yerr = [sem(df.T) for df in groupby(results, :N)],
     yaxis = :log,
-    xlabel = "N", ylabel = "Extinction time"
+    xlabel = L"$N$", ylabel = "Extinction time"
     )
 
 ## fixed N = 100, vary S = 2U
@@ -52,5 +56,5 @@ plot(
     [mean(df.T) for df in groupby(fixed_N, :S)], 
     yerr = [sem(df.T) for df in groupby(fixed_N, :S)],
     yaxis = :log,
-    xlabel = "S = 2U", ylabel = "Extinction time"
+    xlabel = L"$S = 2U$", ylabel = "Extinction time"
     )
