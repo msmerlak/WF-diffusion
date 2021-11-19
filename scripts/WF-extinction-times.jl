@@ -1,5 +1,3 @@
-using DrWatson
-
 using Distributed
 addprocs(Sys.CPU_THREADS)
 

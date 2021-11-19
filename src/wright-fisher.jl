@@ -12,7 +12,6 @@ function Haigh2WF!(p::Dict)
     p[:u] = 1. - exp.(-p[:U])
 end
 
-
 ## exctinction time 
 function WF_extinction(p::Dict; tmax = 1e7, SoverU = nothing)
     

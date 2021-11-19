@@ -1,3 +1,6 @@
+using DrWatson
+@quickactivate
+
 using DifferentialEquations
 using Plots
 
@@ -10,5 +13,3 @@ p = Dict{Symbol, Any}(:s => 1e-1, :u => 1e-2, :v => 1e-2, :x₀ => .5, :N => 50)
 wf = WFdiffusion(p)
 
 solve(wf) |> plot
-
-#, isoutofdomain=(u,p,t) -> any(x -> x < 0 || x > 1, u)
