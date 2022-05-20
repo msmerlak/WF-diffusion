@@ -45,10 +45,8 @@ begin
         T_se = Float64[]
     )
 
-    U = .01
-    S = .01
+    U = S = .01
     for N in N_RANGE, selection_type in (:reproduction, :viability)
-        S = 2U
         p = Dict(:N => N, :U => U, :S => S, :x₀ => .5, :selection_type => selection_type)
         T = extinction_time(p; replicates = 100, max_generations = MAX_GEN)
         @show T
