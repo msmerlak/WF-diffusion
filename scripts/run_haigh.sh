@@ -8,5 +8,5 @@
 #SBATCH --mail-user=smerlak@mis.mpg.de
 #SBATCH --mail-type=ALL
 
-julia haigh-WF-extinction-times.jl > haigh-WF-extinction-times.log
+
 julia haigh-agents-extinction-times.jl > haigh-agents-extinction-times.log

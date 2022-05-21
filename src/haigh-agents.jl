@@ -1,6 +1,7 @@
 
 using Agents
 using Random
+using Distributions:Poisson
 
 mutable struct Haploid <: AbstractAgent
     id::Int
@@ -25,14 +26,13 @@ function initialize(; popsize, S, U, seed=1)
 end
 
 function mutate!(agent, model)
-    if rand(model.rng) < model.U
-        agent.mutations += 1
-        agent.fitness *= (1 - model.S)
-    end
+    n = rand(model.rng, Poisson(model.U))
+    agent.mutations += n
+    agent.fitness *= (1 - model.S)^n
 end
 
 function select!(model)
-    sample!(model, model.popsize, :fitness)
+    Agents.sample!(model, model.popsize, :fitness)
 end
 
 X₀(model) = sum([agent.mutations == 0 for agent in allagents(model)]) / model.popsize

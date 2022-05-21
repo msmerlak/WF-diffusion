@@ -10,3 +10,12 @@ N,selection_type,U,S,T_m,T_se
 900,reproduction,0.01,0.02,4.16096147e6,385029.2404379904
 900,viability,0.01,0.02,4.21913406e6,411683.71055051463
 1100,reproduction,0.01,0.02,Inf,NaN
+1100,viability,0.01,0.02,Inf,NaN
+1300,reproduction,0.01,0.02,Inf,NaN
+1300,viability,0.01,0.02,Inf,NaN
+1500,reproduction,0.01,0.02,Inf,NaN
+1500,viability,0.01,0.02,Inf,NaN
+1700,reproduction,0.01,0.02,Inf,NaN
+1700,viability,0.01,0.02,Inf,NaN
+1900,reproduction,0.01,0.02,Inf,NaN
+1900,viability,0.01,0.02,Inf,NaN

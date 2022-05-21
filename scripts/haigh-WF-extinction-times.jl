@@ -47,7 +47,8 @@ begin
 
     U = S = .01
     for N in N_RANGE
-        T = extinction_time(N, U, S; replicates = 100, max_generations = MAX_GEN)
+        p = Dict(:N => N, :U => U, :S => S, :K => 20)
+        T = extinction_time(p; replicates = 100, max_generations = MAX_GEN)
         @show T
         push!(
             fixed_U_S, [N, U, S, T.mean, T.se]
