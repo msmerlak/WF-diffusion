@@ -43,7 +43,8 @@ begin
         T_se = Float64[]
     )
 
-    U = S = .01
+    S = .04
+    U = 0.07
     for N in N_RANGE
         p = Dict(:N => N, :U => U, :S => S)
         T = extinction_time(p; replicates = 100, max_generations = MAX_GEN)

@@ -9,4 +9,4 @@
 #SBATCH --mail-type=ALL
 
 
-julia haigh-agents-extinction-times.jl > haigh-agents-extinction-times.log
+julia haigh-WF-extinction-times.jl > haigh-WF-extinction-times.log
