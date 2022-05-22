@@ -31,7 +31,7 @@ function run_haigh_WF(p::Dict; seed = 1, max_generations = 1e7, SoverU = nothing
 end
 
 
-function extinction_time(p::Dict; replicates = 10, kwargs...)
+function extinction_time(p::Dict; replicates = 100, kwargs...)
     times = pmap(seed -> run_haigh_WF(p; seed = seed, kwargs...), 1:replicates)
     return (mean = mean(times), se = std(times)/sqrt(length(times)))
 end
