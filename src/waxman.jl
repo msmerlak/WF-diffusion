@@ -30,7 +30,6 @@ function run_waxman(p::Dict; seed = 1, max_generations = 1e7, SoverU = nothing)
     end
     return t < max_generations ? t : Inf
 end
-        
 
 
 function extinction_time(p::Dict; replicates = 10, kwargs...)
