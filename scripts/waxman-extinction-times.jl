@@ -45,14 +45,23 @@ begin
         T_se = Float64[]
     )
 
+<<<<<<< Updated upstream
     S = .04
     U = 0.07
     for N in N_RANGE, selection_type in (:reproduction, :viability)
         p = Dict(:N => N, :U => U, :S => S, :x₀ => .5, :selection_type => selection_type)
+=======
+    S = .01
+    U = .01
+    selection_type = :viability
+    for N in N_RANGE
+        α = 1.1
+        p = Dict(:N => N, :U => U, :S => S, :x₀ => 1., :selection_type => selection_type, :α => α)
+>>>>>>> Stashed changes
         T = extinction_time(p; replicates = 100, max_generations = MAX_GEN)
         @show T
         push!(
-            fixed_U_S, [N, selection_type, U, S, T.mean, T.se]
+            fixed_U_S, [N, selection_type, α, U, S, T.mean, T.se]
         )
 
         CSV.write(datadir("waxman", "extinction_U=$(U)_S=$S.csv"), fixed_U_S)

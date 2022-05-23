@@ -5,7 +5,11 @@ reproduction_selection(x::Float64, p::Dict) = x*(1-p[:u])/(1 - p[:s] + p[:s]*x)
 viability_selection(x::Float64, p::Dict) = x*(1-p[:u])/(1 - p[:s] + p[:s]*(1-p[:u])*x)
 ## convert mutation rate and selection coeffs in Haigh's model to WF
 function Haigh2WF!(p::Dict)
+<<<<<<< Updated upstream
     p[:s] = (1. - exp.(-p[:U]))/(1. - exp.(-p[:U]/p[:S]))
+=======
+    p[:s] = p[:α]*(1. - exp.(-p[:U]))/(1. - exp.(-p[:U]/p[:S]))
+>>>>>>> Stashed changes
     p[:u] = 1. - exp.(-p[:U])
 end
 
